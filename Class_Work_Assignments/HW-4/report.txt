@@ -1,0 +1,117 @@
+0. There are two methods for building a heap from an unsorted array:
+   (1) insert each element into the heap  --- O(nlogn)
+   (2) heapify (top-down)                 --- O(n)
+
+   (a) Derive these time complexities.
+		The first approach of building heap algorithm suggests that the running time is O(nlg(n)), since each call to Heapify costs 
+		O(lg(n)) and Build-Heap makes O(n) such calls. This upper bound, though correct, is not asymptotically tight. The time complexity
+		derivation is as below.
+		Insert elements one by one
+		sum O(logn - h) n/(2^{h+1}) 
+		= O(nlogn) \times sum 1/2^h - O(n) sum h/2^h    
+		= O(nlogn) - O(n)=O(nlogn)  
+		
+		In the second approach the time complexity will be o(n). The heapify function will be call only half of the elements in the array 
+		so the complexity derivation is as below.
+		heapify
+		O(h) n/(2^{h+1}) 
+		= O(n) sum h/2^h = O(n x 2) = O(n)
+   (b) Use a long list of random numbers to show the difference in time. (Hint: random.shuffle)
+	   The below time is taken for 100 random number to build the heap.
+	   For n insertion in heap:  0.01268186652296966
+	   With one heapify on list: 0.00010943201230063232
+	   
+	   The below time is taken for 1000 random number to build the heap.
+	   For n insertion in heap:  0.011938360937591359
+	   With one heapify on list: 0.0009714560225532656
+		       
+	   The below time is taken for 10000 random number to build the heap.
+	   For n insertion in heap:  0.02505044934285484
+	   With one heapify on list: 0.009566412194439749
+
+   (c) What about sorted or reversely-sorted numbers?
+	   sorted array: 
+	   1. Sorted array preserves the heap property. To build heap with sorted array takes O(1) time.
+	   2. O(n)
+	   
+	   reversely-sorted array: Reveraly
+	   1. O(nlogn)
+	   2. O(n)
+1. You need to implement three algorithms and compare:
+
+   (a) enumerate all n^2 pairs, sort, and take top n.
+   (b) enumerate all n^2 pairs, but use qselect from hw1.
+   (c) Dijkstra-style best-first, only enumerate O(n) (at most 2n) pairs.
+       Hint: you can use Python's heapq module for priority queue.
+
+   Q: What are the time complexities of these algorithms? 
+	  a) The time complexity of this approach is O(n^2logn).
+		 To generate all the pairs the complexity is n^2
+		 To sort all n^2 pairs the complexity is n^2logn^2 which is 2*n^2logn
+		 To select first k elements takes O(1) time
+		 In total the complexity is = n^2+n^2logn+1 so the time complexity is O(n^2logn)
+	  b) Time complexity is O(n^2) in this approach
+		 To generate all the pairs the complexity is n^2
+		 To select k smallest elements takes O(k*n)
+		 So total complexity is O(n^2) because it is the dominating term.
+	  c) Time complexity is O(nlogn) in this approach
+		 To sort the elements in the two lists, it takes O(nlogn) time complexity.
+		 At most 2n elements will be generated and added to heap data structure and we will be selecting n elements from the heap so the 
+		 time complexity of this approach is O(nlogn) because this term is the dominating one in the derivation output.
+	  
+2. Q: What is the complexity? Write down the detailed analysis in report.txt.   
+	  The time complexity of k-way mergesort algorithm is O(nlonn)
+	  K-way mergesort is a special case of normal mergesort algorithm where each time the array is divided into 2 but in the case of K-way
+	  mergesort each time the array is divided into k subarrays.
+	  In total there are lonn base k levels will be there and in each level n operations will be performed so the total complexity of the 
+	  algorithm will be O(nlogn base k) but we say the complexity as O(nlogn)
+   
+3. Find the k smallest numbers in a data stream of length n (k<<n),
+   using only O(k) space (the stream itself might be too big to fit in memory).
+
+   Q: What is your complexity? Write down the detailed analysis in report.txt.
+	  The complexity of the algorithm is O(n).
+	  In this algorithm we are visiting all the n elements in the array and we are building a heap of length k. If in the sream all the elements
+	  are in the decreasing order the bubble down function will be called n times in the heap and the height of the heap is lonk which is constant
+	  in this case so the total time complexity of this algorithm is O(n).
+
+4. (optional) Analyze the time complexities of the two "slow" solutions in HW3
+   we provided for the closest_sorted problem.
+   
+   
+5. (Optional) Summarize the time complexities of the basic operations (push, pop-min, peak, heapify)
+   for these implementations of priority queue:
+   
+   -------------------------------------------------------------------------------------------------
+  |	Implementation							|	push	|	pop-min	|	peak	|	heapify			|
+   -------------------------------------------------------------------------------------------------
+  | unsorted array,  					 	|	O(1)	|	 O(n)	|	O(n)	|	O(1)			|
+	------------------------------------------------------------------------------------------------
+  | sorted array (highest priority first),	|	O(n)	|	O(n)	|	O(1)	|	O(nlogn)		|
+	------------------------------------------------------------------------------------------------
+  | sorted array (lowest priority first),	|	O(n)	|	O(1)	|	O(1)	|	O(nlogn)		|
+	------------------------------------------------------------------------------------------------
+  | linked list(sorted),					|	O(1)	|	O(1)	|	O(1)	|	O(nlogn)		|
+	------------------------------------------------------------------------------------------------
+  | binary heap								|	O(logn)	|	O(logn)	|	O(1)	|	O(n)			|
+   --------------------------------------------------------------------------------------------------
+   
+Debriefing (required!): --------------------------
+
+     1. Approximately how many hours did you spend on this assignment?
+        Around 10 hours.
+
+     2. Would you rate it as easy, moderate, or difficult?
+        Moderate to difficult
+
+     3. Did you work on it mostly alone, or mostly with other people?
+        75% alone and 25% with other people
+
+     4. How deeply do you feel you understand the material it covers (0%–100%)?
+        100%
+
+	 5. Which part(s) of the course you like the most so far?
+		Everything so far.
+	 
+	 6. Which part(s) of the course you dislike the most so far?
+		Nothing.

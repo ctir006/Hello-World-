@@ -1,0 +1,78 @@
+0  Q: What's the best-case, worst-case, and average-case time complexities of quicksort.
+   Briefly explain each case. (Quick sort)
+
+   Best-Case:   Assuming that a list of size 'n' is given as an input to the function qsort.
+                We then select the pivot element randomly from the elements in the list and
+                divide the list into 2 subsets, the subset which is left to the pivot element
+                contains all the elements in the list which are less than pivot and the right
+                subset contains all the elements which are greater than the pivot element.
+                The Function qsort is called on the both the subsets recursively. As the pivot
+                element is chosen randomly each time the function has called the chances of
+                getting empty list in left or right is pretty low. If we use tree analysis to
+                calculate the time complexity the length of the tree will be log(n) and as all
+                the elements will be checked once at all level the final time complexity(Best-case)
+                for quick sort will be O(nlog(n))
+
+  Worst-Case:   Assuming that a list of size 'n' is given as an input to the function qsort.
+                We then select the pivot element to be the smallest or largest element in the
+                list and divide the list into 2 subsets, the subset which is left to the pivot
+                element contains all the elements in the list which are less than pivot and the
+                right subset contains all the elements which are greater than the pivot element.
+                So, if we choose the pivot in this format one partition will be empty and the other
+                partition will be contain (n-1) elements.If we use tree analysis to
+                calculate the time complexity and ignoring all the constants we get 'n' and as all
+                the elements will be checked once at all level 'n' the final time complexity(Worst-case)
+                for quick sort will be O(n^2)
+
+  Average-Case: Assuming that we get 3n/4 elements on one side and n/4 elements on other side everytime
+                we do partition. If we use tree analysis the length of the tree for both cases will be
+                log(n) after ignoring the constants. And, as all the elements will be checked once at
+                all level 'n' the final time complexity(Average-case) for quick sort will be O(nlog(n))
+
+  1  Q: What's the best-case, worst-case, and average-case time complexities? Briefly
+     explain.(Quick select)
+
+      Best-Case:  The best case time complexity for quick select is O(n)
+                  We take the a randomized pivot and partition the elements in the list to left and right
+                  where left side has all the elements which are lesser than pivot and right has all the
+                  elements which are greater than the pivot. Everytime we just scan through either the left or right
+                  depending the pivot and the element position we want to retrieve which reduces the inut to n/2 and
+                  then the next call has n/4 and then n/8..till it becomes 1.If we solve that and ignore
+                  constants we get 'n'. The final time complexity(Best-case)for quick selection will be O(n)
+
+      Worst-case: The worst case time complexity for quick select is o(n^2)
+                  Suppose we take the pivot element as the largest element or smallest element in that case one side
+                  will be empty and the other side has n-1 elements. Each time the fuction is called recursively the
+                  inputs will be n-2,n-3.......1 respectively.If we solve that and ignore
+                  constants we get 'n^2'. The final time complexity(Worst-case)for quick selection will be O(n^2)
+
+    Average-case: The best case time complexity for quick select is O(n)
+                  So if we take the average of Best-case and worst case inputs((n-1)+n/2))/2 ignoring the starting n inputs
+                  we get 3/4n and the second function call  we pass (3/4n)^2 till it becomes one. If we solve that and ignore
+                  constants we get 'n'. The final time complexity(Average-case)for quick selection will be O(n)
+
+ 2  Q: What are the time complexities for the operations implemented?
+    i) Sorted(t): Buggy quicksort is similar to binary search tree as it gives the output in the same fashion. So,even the
+       time complexity is same.In this function each element is visited 3 time giving the time complexity 3c * n and after
+       ignoring the constants the final time complexity(Worst-case) will be O(n)
+   ii) search(t, x): In search function half of the list gets skipped everytime,so the search function runs for a maximum of
+       (log(n) to the base 2) time.Thus the time complexity(worst-case) will be O(log(n))
+  iii) Insert(t, x): This function works almost as same as the search function it will search for the correct position and
+       insert the given element with two empty nodes. Thus the time complexity(worst-case) will be O(log(n))
+
+  Debriefing (required!): --------------------------
+
+     1. Approximately how many hours did you spend on this assignment?
+        Around 8 hours.
+
+     2. Would you rate it as easy, moderate, or difficult?
+        Moderate to difficult
+
+     3. Did you work on it mostly alone, or mostly with other people?
+        75% alone and 25% with other people
+
+     4. How deeply do you feel you understand the material it covers (0%–100%)?
+        90%
+
+     5. Any other comments?
+        Nope.

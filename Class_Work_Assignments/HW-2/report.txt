@@ -1,0 +1,60 @@
+Q0. Which of the following sorting algorithms are (or can be made) stable?
+   (a) mergesort
+   (b) quicksort with the first element as pivot
+   (c) quicksort with randomized pivot
+   (d) selection sort
+   (e) insertion sort
+   (f) heap sort --- not covered yet (see CLRS Ch. 6)
+   
+A.	a)	Mergesort algorithm is stable, the relative position of the elements will be maintained in mergesort.
+		It can be unstable if we dont put the "<=" instead of "<" in the first comparison of merging process while comparing left array element
+		with right array element. If we keep only "<" comparison operator when the two equal elements compared it is likely that right array element
+		will be copied to the result so the relative order will not be achieved.
+	
+	b)	Typical inplace quicksort algorithms are not stable. 
+		Quicksort algorithm can be made stable by making simple modifications in the code. The stability can be maintained by making below changes.
+		When there are duplicate elements and the pivot is not randomized, in such cases first we should remove the selected duplicate element from
+		list and we should store all the elements less that the pivot in the left array and all greater than or equal elements in right subarray and 
+		we should keep the pivot elemnt at the middle. If we make these changes in the code we can make this sorting algorithm statble.
+	
+	c)	Quicksort with randomized pivot algorithms are not statble. The relative position cannot be maintained because every time the random element 
+		could change the relative position if the elements are duplicate. So eventhough if we try to make some modifications in the code the random
+		element can be choosen among one of the duplicate elements so we cannot maintain the relative position of duplicate elements.
+	
+	d) 	By definition selection sort is unstable but it can be made stable.
+		Instead of swapping the minimum element with the interation position we should push the other elements back. 
+		With out any modification the selection sort is stable if it implent using linkedlists.
+	
+	e) 	Insertion sort algorithm is stable by its nature of implementation, the relative position of the elements cannot change as it is always search
+		right position to insert from back to front.
+	
+	f)	The final sequence of the results from heapsort comes from removing items from the created heap in purely size order (based on the key field).
+		Any information about the ordering of the items in the original sequence was lost during the heap creation stage, which came first. 
+		Heap sort unstable example
+			Consider array 21 20a 20b  12 11 8 7 (already in max-heap format)
+			Here 20a = 20b just to differentiate the order we represent them as 20a and 20b
+			
+			While heapsort first 21 is removed and placed in the last index then 20a is removed 
+			and placed in last but one index and 20b in the last but two index so after heap sort the array looks like
+			7 8 11 12 20b 20a 21.
+			It does not preserve the order of elements and hence can't be stable
+		
+0. 	What's your name?	
+A.	Chittibabu Tirupathi
+	
+1.	Approximately how many hours did you spend on this assignment?
+A.	5 to 7 hours
+
+2.	Would you rate it as easy, moderate, or difficult?
+A.	Moderate.
+
+3. 	Did you work on it mostly alone, or mostly with other people?
+	Note you are encouraged to discuss with your classmates, 
+	but each students should submit his/her own code.
+A.	I worked on this assignment alone.
+
+4. 	How deeply do you feel you understand the material it covers (0%-100%)? 
+A. 	100%.
+
+5. 	Any other comments?
+A. 	No.

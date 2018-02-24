@@ -1,0 +1,73 @@
+Q: What's the best-case, worst-case, and average-case time complexities of quicksort.
+   Briefly explain each case.
+
+A: 	In the quicksort mechanism each time the function devides the array into two halfs by selecting one of the elements
+	from the list as pivot. Then the elements in the list will be inspected twice to devide the list into left and right halfs.
+	These two halfs will be called recursively with the base condition as the empty array as input to the function(returns [] if base condition is true).
+	i) 	The best-case time complexity of quicksort is O(nlogn)
+		Each time the function chooses the pivot randomly so the is less likely to get empty list in left or right arrays.
+		In the best-case the lenth of recursive tree is log(n) and in each level all elements will be inspected once.
+		So the time complexity will be n*log(n).
+	ii)	The worst-case time complexity of quicksort is O(n*n).
+		When quicksort always has the most unbalanced partitions possible, then the original call takes cn time for some constant c, 
+		the recursive call on n-1 elements takes c(n-1) time, the recursive call on c(n-2), and so on. 
+		When we total up the partitioning times for each level we get ca+c(n-1)+c(n-2)+....+2c=c(n+(n-1)+(n-2)+...+2)=c((n+1)(n/2)-1)
+		The last line is bacause 1+2+3+....+n is the arithmetic series. We have some low-order terms and constant coefficients, but when
+		we use big-Oh notation, we ignore them. In big-Oh notation, quicksort's worst-case running time is O(n*n).
+		Another way to say the samething is, in the worstcase the length of the tree will be n and each time n elements will be visited so 
+		combinely the time complesity will be O(n*n).
+	iii)The average-case time complexity of quicksort is O(nlog(n))
+		Firstly, let's imagine that we don't always get evenly balanced partitions, but	that we always get at worst a 3-to-1 split. That is, 
+		imagine that each time we partition, one side gets 3n/4 elements and the other side gets n/4. Then the tree of subproblem sizes and 
+		partitioings will be like as below.
+		left tree (which have n/4 elements) and the length of the tree will be logn base 2.
+		right tree (which have 3n/4 elements) and the legth of the tree will be logn base 4/3.
+		combinely worst case length of the tree is logn base 4/3 and atmost n elements will be visited in all the levels. So the time complesity
+		in average-case we get cn * log(n) base 4/3.
+		log(n) base 4/3 and log(n) differs very small amount so we take log(n) inplace of log(n) base 4/3 and the final will be nlog(n).
+		
+Q: What's the best-case, worst-case, and average-case time complexities of quickselect with randomized Pivot ? Briefly explain.
+	i)	The best-case time complexity of quickselect is O(n)
+		In the best-case the length of the array will become half each time, so total number of elements visited in all the cases can be expressed as below.
+		n+n/2+n/4+....+1. We can write it as 2n. So best-case time complesity will O(n).
+	ii) The worst-case time complesity of quickselect is O(n*n)
+		In the worst case every time one of the sub array will be empty all the time. So the total number of element visited can be written as below.
+		n+n-1+n-2+....+1. This expression is line sum of n natural bumbers. If we eliminate the constant terms in the expression the complesity is O(n*n).
+	iii)The average-case time complexity of quickselect is O(n)	
+		In the average case, for example if the array divide 3/4th each time. The expression is as below.
+		n+3n/4+9n/16+....+1. This is approximately equal to the best-case complesity. So the average case time complesity of qselect function is O(n).
+		
+Q: What are the time complexities for the operations implemented?
+
+A: 	i)	sorted(t): returns the sorted order (infix traversal)
+		The Buggy quicksort gives the output exatly same as binary search tree, so the time complesity is resemples same as the time complesity of 
+		tree traversal. While implementing the sorted(t) function each element in list will be visited 3 times. So total time complesity of the 
+		implemented method is 3*c*n. The time complesity will be O(n).
+	ii)	search(t, x): returns whether x is in t
+		The worst case time complexity of the search(t,x) function is O(log(n)). This is because every time half of the list will get skipped so at
+		most seach(t,x) function get called log(n) base 2 times. So time complexity of search(t,x) function would be log(n) base 2.
+	iii)insert(t, x): inserts x into t (in-place) if it is missing, otherwise does nothing.
+		The worst case time complexity of the insert(t,x) function is log(n). It is exatly same as the seach(t,x) function explained above. This function
+		will look for the correct empty position in the bussy binary search tree and inserts the given element will two empty([])lists either sides.
+
+Q. Debriefing (required!): --------------------------
+
+A.	1. 	Approximately how many hours did you spend on this assignment?
+		As I am aware of recursive function and the quicksort algorithms before, I didn't take too long to solve this assignment. I spent much time in 
+		time complesity analysis and writing the report. I spent in an average 5 hours.
+		
+	2. 	Would you rate it as easy, moderate, or difficult?
+		I would say that the difficulty of the assinment is Moderate.
+		
+	3.	Did you work on it mostly alone, or mostly with other people?
+		I worked on it alone.
+		
+	4. 	How deeply do you feel you understand the material it covers (0%–100%)? 
+		100%.
+	
+	5. 	Any other comments?
+		No.
+	
+	
+	
+	
